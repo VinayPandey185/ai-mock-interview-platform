@@ -1,36 +1,145 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Mock Interview Platform
 
-## Getting Started
+AI-powered mock interview platform that helps users practice interviews with dynamic role-based questions, receive instant AI feedback, and track interview history.
 
-First, run the development server:
+## Live Features
+
+- Dynamic AI-generated interview questions based on selected role
+- Supports multiple job roles:
+  - Python Developer
+  - Frontend Developer
+  - Data Analyst
+  - HR Interview
+  - Java Developer
+  - Software Engineer
+- 5-question interview flow
+- Back button to review and edit previous answers
+- AI-generated final evaluation report
+- Score, feedback, and improvement suggestions
+- Interview history tracking
+- Delete previous interview records
+- Premium responsive UI
+- Role-based mock interview experience
+
+---
+
+## Tech Stack
+
+### Frontend
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+
+### Backend
+- FastAPI
+- Python
+
+### AI Integration
+- Groq API
+
+### Database
+- SQLite
+
+---
+
+## Folder Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+ai-mock-interview/
+│── src/app/
+│   ├── page.tsx
+│   ├── select-role/page.tsx
+│   ├── interview/page.tsx
+│   ├── dashboard/page.tsx
+│   └── history/page.tsx
+│
+│── backend/
+│   ├── main.py
+│   ├── database.py
+│   └── interviews.db
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How to Run Project
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Frontend
 
-## Learn More
+```bash
+npm install
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Runs on:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+http://localhost:3000
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Backend
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+cd backend
+pip install -r requirements.txt
+python -m uvicorn main:app --reload
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Runs on:
+
+```bash
+http://127.0.0.1:8000
+```
+
+---
+
+## Environment Variables
+
+Create `.env` inside backend folder:
+
+```env
+GROQ_API_KEY=your_api_key_here
+```
+
+---
+
+## Screenshots
+
+Add screenshots here after deployment:
+
+- Homepage
+- Select Role Page
+- Interview Page
+- Dashboard Report
+- History Page
+
+---
+
+## Future Improvements
+
+- User authentication
+- PDF report export
+- Voice interview mode
+- Webcam interview simulation
+- Leaderboard
+- Resume-based interview questions
+- Multi-language support
+
+---
+
+## Why This Project
+
+This project simulates a real AI interview preparation platform where users can practice role-based interviews, improve communication skills, and receive instant feedback.
+
+---
+
+## Author
+
+Vinay Pandey
+
+GitHub: https://github.com/VinayPandey185  
+LinkedIn: https://www.linkedin.com/in/vinay-pandey-855579134/
+
+```
