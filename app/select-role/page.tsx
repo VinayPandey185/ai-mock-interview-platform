@@ -8,34 +8,28 @@ export default function SelectRole() {
 
   const roles = [
     {
-      title: "Python Developer",
-      desc: "Backend logic, APIs, Flask, Django, FastAPI.",
-      icon: "",
+      title: "Python Developer 🐍",
+      desc: "Backend logic, APIs, Flask, FastAPI.",
     },
     {
-      title: "Frontend Developer",
-      desc: "React, Next.js,UI design, responsive apps, JavaScript.",
-      icon: "",
+      title: "Frontend Developer 💻",
+      desc: "React, Next.js,UI design, JavaScript.",
     },
     {
-      title: "Data Analyst",
-      desc: "SQL, Excel, Power BI, dashboards, insights.",
-      icon: "",
+      title: "Data Analyst 📊",
+      desc: "SQL, Excel, Power BI, dashboards.",
     },
     {
-      title: "HR Interview",
-      desc: "Behavioral rounds, communication, confidence.",
-      icon: "",
+      title: "HR Interview 🧑💼",
+      desc: "Behavioral rounds, communication.",
     },
     {
-      title: "Java Developer",
+      title: "Java Developer 🏗️",
       desc: "OOP, Spring Boot, backend systems.",
-      icon: "",
     },
     {
-      title: "Software Engineer",
+      title: "Software Engineer 👨‍💻",
       desc: "DSA, problem solving, system basics.",
-      icon: "",
     },
   ];
 
