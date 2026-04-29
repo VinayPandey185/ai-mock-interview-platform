@@ -44,7 +44,7 @@ export default function Home() {
       </Link>
 
       <Link href="/history">
-        <button className="border border-slate-700 bg-slate-900 hover:bg-blue-500 px-8 py-4 rounded-2xl font-semibold text-lg transition">
+        <button className="bg-blue-500 hover:bg-blue-600 px-8 py-4 rounded-2xl font-semibold text-lg transition shadow-lg">
           View History
         </button>
       </Link>

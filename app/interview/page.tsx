@@ -152,7 +152,7 @@ export default function InterviewPage() {
             {count > 0 && (
               <button
                 onClick={goBack}
-                className="border border-slate-700 bg-slate-900 hover:bg-blue-500 px-6 py-3 rounded-2xl font-semibold transition"
+              className="bg-blue-500 hover:bg-blue-600 px-7 py-3 rounded-2xl shadow-lg font-semibold transition"
               >
                 Back
               </button>

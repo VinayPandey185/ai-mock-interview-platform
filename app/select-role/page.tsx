@@ -10,32 +10,32 @@ export default function SelectRole() {
     {
       title: "Python Developer",
       desc: "Backend logic, APIs, Flask, Django, FastAPI.",
-      icon: "🐍",
+      icon: "",
     },
     {
       title: "Frontend Developer",
       desc: "React, Next.js,UI design, responsive apps, JavaScript.",
-      icon: "💻",
+      icon: "",
     },
     {
       title: "Data Analyst",
       desc: "SQL, Excel, Power BI, dashboards, insights.",
-      icon: "📊",
+      icon: "",
     },
     {
       title: "HR Interview",
       desc: "Behavioral rounds, communication, confidence.",
-      icon: "🧑‍💼",
+      icon: "",
     },
     {
       title: "Java Developer",
       desc: "OOP, Spring Boot, backend systems.",
-      icon: "☕",
+      icon: "",
     },
     {
       title: "Software Engineer",
       desc: "DSA, problem solving, system basics.",
-      icon: "🚀",
+      icon: "",
     },
   ];
 
