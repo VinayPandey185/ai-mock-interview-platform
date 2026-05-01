@@ -129,22 +129,11 @@ GROQ_API_KEY=your_api_key_here
 
 🚀 Future Improvements
 
-
 🔐 User authentication
-
-
 📄 PDF report export
-
-
 🎙 Voice-based interview mode
-
-
 📷 Webcam interview simulation
-
-
 🧠 Resume-based question generation
-
-
 🌐 Multi-language support
 
 
