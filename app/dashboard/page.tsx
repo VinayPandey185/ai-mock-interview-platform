@@ -19,32 +19,14 @@ export default function Dashboard() {
       <div className="relative z-10 max-w-6xl mx-auto">
 
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-5 mb-10">
-          <h1 className="text-4xl font-bold">
+        <div className="text-center mb-12">
+          <h1 className="text-3xl md:text-4xl font-bold">
             Interview Report
           </h1>
-
-          {/* Navigation Buttons */}
-          <div className="flex flex-wrap gap-3">
-            <Link href="/">
-              <button className="border border-slate-700 bg-slate-900 hover:bg-blue-500 px-5 py-3 rounded-2xl font-semibold transition">
-                Home
-              </button>
-            </Link>
-
-            <Link href="/history">
-              <button className="border border-slate-700 bg-slate-900 hover:bg-blue-500 px-5 py-3 rounded-2xl font-semibold transition">
-                History
-              </button>
-            </Link>
-
-            <Link href="/select-role">
-              <button className="border border-slate-700 bg-slate-900 hover:bg-blue-500 px-5 py-3 rounded-2xl font-semibold transition">
-                New Interview
-              </button>
-            </Link>
-          </div>
-        </div>
+        <p className="text-slate-400 mt-2">
+          Your AI evaluation summary
+        </p>
+      </div>
 
         {/* Cards */}
         <div className="grid md:grid-cols-3 gap-6 mb-8">

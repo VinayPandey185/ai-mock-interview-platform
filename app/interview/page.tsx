@@ -99,27 +99,6 @@ export default function InterviewPage() {
               Question {count + 1} of 5
             </p>
           </div>
-
-          {/* Navigation */}
-          <div className="flex flex-wrap gap-3">
-            <Link href="/">
-              <button className="border border-slate-700 bg-slate-900 hover:bg-blue-500 px-5 py-3 rounded-2xl font-semibold transition">
-                Home
-              </button>
-            </Link>
-
-            <Link href="/history">
-              <button className="border border-slate-700 bg-slate-900 hover:bg-blue-500 px-5 py-3 rounded-2xl font-semibold transition">
-                History
-              </button>
-            </Link>
-
-            <Link href="/select-role">
-              <button className="border border-slate-700 bg-slate-900 hover:bg-blue-500 px-5 py-3 rounded-2xl font-semibold transition">
-                Change Role
-              </button>
-            </Link>
-          </div>
         </div>
 
         {/* Progress Bar */}

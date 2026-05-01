@@ -1,32 +1,36 @@
-# AI Mock Interview Platform
+# 🚀 AI Mock Interview Platform
 
-AI-powered mock interview platform that helps users practice interviews with dynamic role-based questions, receive instant AI feedback, and track interview history.
+AI-powered mock interview platform that helps users practice real interview scenarios, receive instant AI feedback, and improve performance through structured evaluation.
 
-## Live Features
+---
 
-- Dynamic AI-generated interview questions based on selected role
-- Supports multiple job roles:
+## ✨ Features
+
+- 🤖 AI-generated role-based interview questions
+- 💼 Multiple job roles supported:
   - Python Developer
   - Frontend Developer
   - Data Analyst
   - HR Interview
   - Java Developer
   - Software Engineer
-- 5-question interview flow
-- Back button to review and edit previous answers
-- AI-generated final evaluation report
-- Score, feedback, and improvement suggestions
-- Interview history tracking
-- Delete previous interview records
-- Premium responsive UI
-- Role-based mock interview experience
+- 🧠 5-question structured interview flow
+- ⬅️ Back navigation to review/edit answers
+- 📊 AI-powered evaluation report:
+  - Score (X out of 10)
+  - Detailed feedback
+  - Improvement suggestions
+- 📁 Interview history tracking
+- 🗑️ Delete past interviews
+- 🎨 Premium responsive UI (dark theme)
+- ⚡ Fast and smooth experience
 
 ---
 
-## Tech Stack
+## 🛠 Tech Stack
 
 ### Frontend
-- Next.js
+- Next.js (App Router)
 - React
 - TypeScript
 - Tailwind CSS
@@ -36,98 +40,124 @@ AI-powered mock interview platform that helps users practice interviews with dyn
 - Python
 
 ### AI Integration
-- Groq API
+- Groq API (LLaMA 3)
 
 ### Database
 - SQLite
 
 ---
 
-## Folder Structure
+## 📸 Screenshots
+
+### 🏠 Home Page
+<p align="center">
+  <img src="./screenshots/home.png" width="90%" />
+</p>
+
+---
+
+### 🎯 Select Role
+<p align="center">
+  <img src="./screenshots/select-role.png" width="90%" />
+</p>
+
+---
+
+### 🎤 Interview Page
+<p align="center">
+  <img src="./screenshots/interview.png" width="90%" />
+</p>
+
+---
+
+### 📊 Dashboard Report
+<p align="center">
+  <img src="./screenshots/dashboard.png" width="90%" />
+</p>
+
+---
+
+### 📜 Interview History
+<p align="center">
+  <img src="./screenshots/history.png" width="90%" />
+</p>
+
+---
+
+## 📂 Project Structure
 
 ```bash
 ai-mock-interview/
-│── src/app/
+│── app/
 │   ├── page.tsx
-│   ├── select-role/page.tsx
-│   ├── interview/page.tsx
-│   ├── dashboard/page.tsx
-│   └── history/page.tsx
+│   ├── select-role/
+│   ├── interview/
+│   ├── dashboard/
+│   └── history/
+│
+│── components/
+│   └── Navbar.tsx
 │
 │── backend/
 │   ├── main.py
 │   ├── database.py
 │   └── interviews.db
-```
-
----
+│
+│── screenshots/
+│   ├── home.png
+│   ├── select-role.png
+│   ├── interview.png
+│   ├── dashboard.png
+│   └── history.png
 
 ## How to Run Project
 
-## Frontend
-
-```bash
-npm install
-npm run dev
-```
-
+⚙️ How to Run
+Frontend
+npm installnpm run dev
 Runs on:
-
-```bash
 http://localhost:3000
-```
 
----
-
-## Backend
-
-```bash
-cd backend
-pip install -r requirements.txt
-python -m uvicorn main:app --reload
-```
-
+Backend
+cd backendpip install -r requirements.txtuvicorn main:app --reload
 Runs on:
-
-```bash
 http://127.0.0.1:8000
-```
 
----
-
-## Environment Variables
-
-Create `.env` inside backend folder:
-
-```env
+🔑 Environment Variables
+Create .env inside backend folder:
 GROQ_API_KEY=your_api_key_here
-```
 
----
+🚀 Future Improvements
 
-## Screenshots
 
-Add screenshots here after deployment:
+🔐 User authentication
 
-- Homepage
-- Select Role Page
-- Interview Page
-- Dashboard Report
-- History Page
 
----
+📄 PDF report export
 
-## Future Improvements
 
-- User authentication
-- PDF report export
-- Voice interview mode
-- Webcam interview simulation
-- Leaderboard
-- Resume-based interview questions
-- Multi-language support
+🎙 Voice-based interview mode
 
----
+
+📷 Webcam interview simulation
+
+
+🧠 Resume-based question generation
+
+
+🌐 Multi-language support
+
+
+
+💡 Project Purpose
+
+This project simulates a real-world AI interview preparation platform, helping users:
+
+- Practice structured interviews
+- Improve communication skills
+- Receive instant AI-driven feedback
+- Track performance over time
+
 
 ## Why This Project
 
@@ -139,7 +169,6 @@ This project simulates a real AI interview preparation platform where users can 
 
 Vinay Pandey
 
-GitHub: https://github.com/VinayPandey185  
-LinkedIn: https://www.linkedin.com/in/vinay-pandey-855579134/
+GitHub: https://github.com/VinayPandey185
 
 ```

@@ -100,7 +100,7 @@ def evaluate(data: dict):
         {answer}
 
         Give:
-        Score out of 10
+        Score out of 10 (STRICT format: X out of 10)
         Feedback
         Suggestions
         """
@@ -114,8 +114,14 @@ def evaluate(data: dict):
 
         result = response.choices[0].message.content
 
-        match = re.search(r'(\d+\/10|\d+ out of 10)', result)
-        score = match.group(1) if match else "AI Rated"
+        # ✅ Normalize score format
+        match = re.search(r'(\d+)\s*/\s*10|(\d+)\s*out\s*of\s*10', result, re.IGNORECASE)
+
+        if match:
+            num = match.group(1) or match.group(2)
+            score = f"{num} out of 10"
+        else:
+            score = "AI Rated"
 
         save_history(role, score, result)
 
@@ -123,7 +129,6 @@ def evaluate(data: dict):
 
     except Exception as e:
         return {"result": f"Error: {str(e)}"}
-
 
 @app.get("/history")
 def history():

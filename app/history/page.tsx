@@ -43,25 +43,14 @@ export default function HistoryPage() {
       <div className="relative z-10 max-w-6xl mx-auto">
 
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-5 mb-10">
-          <h1 className="text-4xl font-bold">
-            Interview History
-          </h1>
-
-          <div className="flex flex-wrap gap-3">
-            <Link href="/">
-              <button className="border border-slate-700 bg-slate-900 hover:bg-blue-500 px-5 py-3 rounded-2xl font-semibold transition">
-                Home
-              </button>
-            </Link>
-
-            <Link href="/select-role">
-              <button className="border border-slate-700 bg-slate-900 hover:bg-blue-500 px-5 py-3 rounded-2xl font-semibold transition">
-                New Interview
-              </button>
-            </Link>
-          </div>
-        </div>
+      <div className="text-center mb-10">
+        <h1 className="text-3xl md:text-4xl font-bold">
+          Interview History
+        </h1>
+        <p className="text-slate-400 mt-2">
+          Review your past interviews and track your progress
+        </p>
+      </div>
 
         {/* Table */}
 <div className="bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 shadow-xl overflow-x-auto">          <table className="w-full">

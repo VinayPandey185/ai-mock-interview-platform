@@ -3,15 +3,6 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="min-h-screen bg-slate-950 text-white">
-      
-{/* Navbar */}
-<nav className="flex justify-between items-center px-8 py-5 border-b border-slate-800">
-  <Link href="/">
-    <h1 className="text-2xl font-bold text-blue-400 cursor-pointer">
-      AI Mock Interview
-    </h1>
-  </Link>
-</nav>
 
       {/* Hero */}
 <section className="relative overflow-hidden max-w-6xl mx-auto px-8 py-28 text-center">
