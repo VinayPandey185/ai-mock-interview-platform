@@ -47,5 +47,6 @@ venv/
 .env
 
 # database
+backend/interviews.db
 *.db
 interviews.db
