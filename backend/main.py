@@ -2,7 +2,6 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from groq import Groq
 from dotenv import load_dotenv
-from database import init_db, save_history, get_history
 from database import init_db, save_history, get_history, delete_history
 import os
 import re
@@ -13,10 +12,8 @@ client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 app = FastAPI()
 
-# Initialize SQLite DB
 init_db()
 
-# CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -35,25 +32,22 @@ def home():
 def get_questions(role: str = "Software Engineer"):
     try:
         prompt = f"""
-        Generate exactly 5 interview questions for {role} role.
+Generate exactly 5 interview questions for {role} role.
 
-        Rules:
-        - Professional
-        - Role specific
-        - Numbered list only
-        - No heading
-        - No explanation
+Rules:
+- Only questions (no headings like technical/behavioral)
+- No explanation
+- Each question on new line
+- Number from 1 to 5
 
-        Example:
-        1. Question...
-        2. Question...
-        """
+Example:
+1. What is React?
+2. Explain REST API
+"""
 
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
-            messages=[
-                {"role": "user", "content": prompt}
-            ]
+            messages=[{"role": "user", "content": prompt}]
         )
 
         text = response.choices[0].message.content
@@ -63,11 +57,7 @@ def get_questions(role: str = "Software Engineer"):
 
         for line in lines:
             clean = line.strip()
-
             if not clean:
-                continue
-
-            if "here are" in clean.lower():
                 continue
 
             if clean[0].isdigit():
@@ -80,12 +70,37 @@ def get_questions(role: str = "Software Engineer"):
         return {
             "questions": [
                 "Tell me about yourself.",
-                "Why should we hire you?",
+                "Explain OOP concepts.",
+                "What is REST API?",
                 "What are your strengths?",
-                "Where do you see yourself in 5 years?",
                 "Why this role?"
             ]
         }
+
+import re
+
+def is_gibberish(text: str) -> bool:
+    t = (text or "").strip()
+
+    # too short
+    if len(t) < 15:
+        return True
+
+    # low word count
+    words = re.findall(r"[a-zA-Z]{3,}", t)
+    if len(words) < 5:
+        return True
+
+    # lots of repeated chars (e.g., aaaa, dfdgdf)
+    if re.search(r"(.)\1{3,}", t):
+        return True
+
+    # low alphabetic ratio (symbols/numbers heavy)
+    letters = re.findall(r"[a-zA-Z]", t)
+    if len(letters) / max(len(t), 1) < 0.4:
+        return True
+
+    return False
 
 
 @app.post("/evaluate")
@@ -94,32 +109,68 @@ def evaluate(data: dict):
         answer = data.get("answer", "")
         role = data.get("role", "General")
 
+        # ✅ VALIDATION FIRST (no AI call if bad)
+        if is_gibberish(answer):
+            result = """Score: 1.5 out of 10
+
+Feedback:
+- The answers appear to be incomplete, random, or not meaningful.
+- No clear understanding of the questions is demonstrated.
+- The responses lack structure and relevant content.
+
+Suggestions:
+- Provide clear and structured answers.
+- Include examples, explanations, or reasoning.
+- Avoid random or placeholder text.
+"""
+
+            save_history(role, "1.5 out of 10", result)
+            return {"result": result}
+
+        # ✅ ONLY CALL AI FOR VALID ANSWERS
         prompt = f"""
-        Evaluate this full mock interview for {role} role.
+Evaluate this mock interview for {role} role.
 
-        {answer}
+Answers:
+{answer}
 
-        Give:
-        Score out of 10 (STRICT format: X out of 10)
-        Feedback
-        Suggestions
-        """
+STRICT EVALUATION RULES:
+
+Score Guidelines:
+- Nonsense → 0 to 3
+- Weak → 3 to 5
+- Average → 5 to 7
+- Good → 7 to 9
+- Excellent → 9+
+
+IMPORTANT:
+- Be strict and realistic
+- Do not reward meaningless answers
+
+OUTPUT FORMAT:
+
+Score: X.X out of 10
+
+Feedback:
+- Point 1
+- Point 2
+
+Suggestions:
+- Point 1
+- Point 2
+"""
 
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
-            messages=[
-                {"role": "user", "content": prompt}
-            ]
+            messages=[{"role": "user", "content": prompt}]
         )
 
         result = response.choices[0].message.content
 
-        # ✅ Normalize score format
-        match = re.search(r'(\d+)\s*/\s*10|(\d+)\s*out\s*of\s*10', result, re.IGNORECASE)
+        match = re.search(r'(\d+(?:\.\d+)?)\s*out\s*of\s*10', result, re.IGNORECASE)
 
         if match:
-            num = match.group(1) or match.group(2)
-            score = f"{num} out of 10"
+            score = f"{match.group(1)} out of 10"
         else:
             score = "AI Rated"
 
@@ -129,7 +180,6 @@ def evaluate(data: dict):
 
     except Exception as e:
         return {"result": f"Error: {str(e)}"}
-
 @app.get("/history")
 def history():
     rows = get_history()
@@ -146,6 +196,7 @@ def history():
         })
 
     return {"history": data}
+
 
 @app.delete("/history/{item_id}")
 def remove_history(item_id: int):

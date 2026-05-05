@@ -1,60 +1,91 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import Link from "next/link";
 
 export default function Dashboard() {
   const params = useSearchParams();
 
-  const result = params.get("result") || "No result found";
+  const role = params.get("role") || "Interview";
+  const date = params.get("date") || "";
+  const result = params.get("result") || "";
 
-  const scoreMatch = result.match(/Score:\s*(.*)/i);
-  const score = scoreMatch ? scoreMatch[1] : "AI Rated";
+  const parseReport = (report: string) => {
+    const scoreMatch = report.match(/Score:\s*(.*)/i);
+    const score = scoreMatch
+      ? scoreMatch[1].replace(/\*\*/g, "").trim()
+      : "AI Rated";
+
+    const feedbackMatch = report.match(/Feedback:\s*([\s\S]*?)Suggestions:/i);
+    const feedback = feedbackMatch
+      ? feedbackMatch[1].split("\n").filter((l) => l.trim())
+      : [];
+
+    const suggestionsMatch = report.match(/Suggestions:\s*([\s\S]*)/i);
+    const suggestions = suggestionsMatch
+      ? suggestionsMatch[1].split("\n").filter((l) => l.trim())
+      : [];
+
+    return { score, feedback, suggestions };
+  };
+
+  const { score, feedback, suggestions } = parseReport(result);
 
   return (
-    <main className="relative min-h-screen bg-slate-950 text-white p-4 md:p-8">
+    <main className="min-h-screen bg-slate-950 text-white p-4 md:p-8">
 
-      <div className="absolute inset-0 opacity-10 bg-[url('/bg-ai.png')] bg-cover bg-center pointer-events-none"></div>
+      <div className="max-w-6xl mx-auto">
 
-      <div className="relative z-10 max-w-6xl mx-auto">
+        {/* Title */}
+        <div className="text-center mb-10">
+          <h1 className="text-3xl font-bold">Interview Report</h1>
+          <p className="text-slate-400">Your AI evaluation summary</p>
+        </div>
 
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold">
-            Interview Report
-          </h1>
-        <p className="text-slate-400 mt-2">
-          Your AI evaluation summary
-        </p>
-      </div>
+        {/* Header (Role + Date) */}
+        <div className="mb-6">
+          <h2 className="text-2xl font-bold">{role}</h2>
+          <p className="text-slate-400">{date}</p>
+        </div>
 
-        {/* Cards */}
+        {/* Score Cards */}
         <div className="grid md:grid-cols-3 gap-6 mb-8">
 
-          <div className="bg-white/5 backdrop-blur-sm p-6 rounded-3xl border border-white/10 shadow-xl">
-            <p className="text-slate-400">Final Score</p>
-            <h2 className="text-3xl md:text-5xl font-bold text-blue-400 mt-3">
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+            <p className="text-slate-400 text-sm">Final Score</p>
+            <h3 className="text-4xl font-bold text-blue-400 mt-2">
               {score}
-            </h2>
+            </h3>
           </div>
 
-          <div className="bg-white/5 backdrop-blur-sm p-6 rounded-3xl border border-white/10 shadow-xl">
-            <p className="text-slate-400">Questions</p>
-            <h2 className="text-3xl md:text-5xl font-bold mt-3">5</h2>
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+            <p className="text-slate-400 text-sm">Questions</p>
+            <h3 className="text-4xl font-bold mt-2">5</h3>
           </div>
 
-          <div className="bg-white/5 backdrop-blur-sm p-6 rounded-3xl border border-white/10 shadow-xl">
-            <p className="text-slate-400">Status</p>
-            <h2 className="text-3xl font-bold text-green-400 mt-4">
-              Completed
-            </h2>
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+            <p className="text-slate-400 text-sm">Status</p>
+            <h3 className="text-green-400 font-bold mt-2">Completed</h3>
           </div>
 
         </div>
 
-        {/* AI Full Result */}
-        <div className="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10 shadow-xl whitespace-pre-line leading-8 text-slate-200">
-          {result}
+        {/* Feedback */}
+        <div className="space-y-6">
+
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+            <h3 className="text-green-400 font-semibold mb-3">Feedback</h3>
+            {feedback.map((f, i) => (
+              <p key={i}>• {f}</p>
+            ))}
+          </div>
+
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+            <h3 className="text-yellow-400 font-semibold mb-3">Suggestions</h3>
+            {suggestions.map((s, i) => (
+              <p key={i}>• {s}</p>
+            ))}
+          </div>
+
         </div>
 
       </div>

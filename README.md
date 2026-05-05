@@ -6,24 +6,24 @@ AI-powered mock interview platform that helps users practice real interview scen
 
 ## ✨ Features
 
-- 🤖 AI-generated role-based interview questions
+- 🤖 AI-generated role-based interview questions  
 - 💼 Multiple job roles supported:
-  - Python Developer
-  - Frontend Developer
-  - Data Analyst
-  - HR Interview
-  - Java Developer
-  - Software Engineer
-- 🧠 5-question structured interview flow
-- ⬅️ Back navigation to review/edit answers
+  - Python Developer  
+  - Frontend Developer  
+  - Data Analyst  
+  - HR Interview  
+  - Java Developer  
+  - Software Engineer  
+- 🧠 5-question structured interview flow  
+- ⬅️ Back navigation to review/edit answers  
 - 📊 AI-powered evaluation report:
-  - Score (X out of 10)
-  - Detailed feedback
-  - Improvement suggestions
-- 📁 Interview history tracking
-- 🗑️ Delete past interviews
-- 🎨 Premium responsive UI (dark theme)
-- ⚡ Fast and smooth experience
+  - Score (X out of 10)  
+  - Detailed feedback  
+  - Improvement suggestions  
+- 📁 Interview history tracking  
+- 🗑️ Delete past interviews  
+- 🎨 Premium responsive UI (dark theme)  
+- ⚡ Fast and smooth experience  
 
 ---
 
@@ -110,11 +110,10 @@ ai-mock-interview/
 │   ├── dashboard.png
 │   └── history.png
 
-## How to Run Project
-
 ⚙️ How to Run
+
 Frontend
-npm installnpm run dev
+npm install npm run dev
 Runs on:
 http://localhost:3000
 

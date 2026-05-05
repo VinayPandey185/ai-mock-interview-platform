@@ -72,8 +72,8 @@ export default function InterviewPage() {
     const data = await res.json();
 
     router.push(
-      `/dashboard?result=${encodeURIComponent(data.result)}`
-    );
+  `/dashboard?result=${encodeURIComponent(data.result)}&role=${encodeURIComponent(role)}&date=${encodeURIComponent(new Date().toLocaleString())}`
+);
   };
 
   const goBack = () => {
