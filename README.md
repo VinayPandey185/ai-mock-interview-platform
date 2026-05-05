@@ -110,8 +110,10 @@ ai-mock-interview/
 │   ├── dashboard.png
 │   └── history.png
 
-## ⚙️ How to Run Project
 
+## How to Run Project
+
+⚙️ How to Run
 Frontend
 npm install npm run dev
 Runs on:
