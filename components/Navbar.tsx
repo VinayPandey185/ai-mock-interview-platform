@@ -13,17 +13,24 @@ export default function Navbar() {
 
   return (
     <nav className="flex justify-between items-center px-6 py-4 border-b border-slate-800 bg-slate-950/70 backdrop-blur-md sticky top-0 z-50">
-
       {/* Logo */}
-      <Link href="/" className="text-xl md:text-2xl font-bold tracking-tight">
-        <span className="text-blue-400">AI</span>{" "}
-        <span className="text-white">Mock Interview</span>
+      <Link href="/" className="flex items-center gap-3">
+        <img
+          src="/job-interview.png"
+          alt="AI Logo"
+          className="w-8 h-8 rounded-md"
+        />
+
+        <span className="text-xl md:text-2xl font-bold tracking-tight">
+          <span className="text-blue-400">AI</span>{" "}
+          <span className="text-white">Mock Interview</span>
+        </span>
+        <img src="/slide.gif" alt="AI Logo" className="w-8 h-8 rounded-md" />
       </Link>
 
       {/* Right Side */}
       <div className="flex gap-3 items-center">
-
-        {/* HOME PAGE */}
+        {/* SELECT ROLE PAGE */}
         {!isHome && !isInterview && !isDashboard && !isHistory && (
           <>
             <Link href="/">
@@ -102,7 +109,6 @@ export default function Navbar() {
             </Link>
           </>
         )}
-
       </div>
     </nav>
   );

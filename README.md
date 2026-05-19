@@ -114,13 +114,17 @@ ai-mock-interview/
 ## How to Run Project
 
 ⚙️ How to Run
-Frontend
-npm install npm run dev
+
+Frontend:
+npm install 
+npm run dev
 Runs on:
 http://localhost:3000
 
-Backend
-cd backendpip install -r requirements.txtuvicorn main:app --reload
+Backend:
+cd backend 
+pip install -r requirements.txt
+uvicorn main:app --reload
 Runs on:
 http://127.0.0.1:8000
 
